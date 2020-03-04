@@ -6,4 +6,7 @@
     <RootNamespace>_4calc</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Calculator\Calculator.csproj" />
+  </ItemGroup>
 </Project>
