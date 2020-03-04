@@ -6,6 +6,7 @@ namespace _4calc
     {
         static void Main(string[] args)
         {
+            //test
             Calculator calculator = new Calculator();
             Console.WriteLine("1. +\t2. -\t3.*\t4. /\t5. ^\t6. =\n" +
                 "7. sin\t8. cos\t9. tg\t10. arctg\n" +
