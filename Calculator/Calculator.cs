@@ -2,7 +2,7 @@
 
 namespace Calculator
 {
-     public class Calculator1
+     public class NewCalculator
     {
         Storage storage = new Storage();
 

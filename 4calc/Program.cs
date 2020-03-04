@@ -6,9 +6,8 @@ namespace _4calc
     class Program
     {
         static void Main(string[] args)
-        {
-            ////////teeeeeesst
-            Calculator1 calculator = new Calculator1();
+        {           
+            NewCalculator calculator = new NewCalculator();
             Console.WriteLine("1. +\t2. -\t3.*\t4. /\t5. ^\t6. =\n" +
                 "7. sin\t8. cos\t9. tg\t10. arctg\n" +
                     "11. Ln\t12. Log10\t13. Exp\n" +
