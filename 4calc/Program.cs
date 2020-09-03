@@ -7,7 +7,7 @@ namespace _4calc
     {
         static void Main(string[] args)
         {           
-            NewCalculator calculator = new NewCalculator();
+            //NewCalculator calculator = new NewCalculator();
             Console.WriteLine("1. +\t2. -\t3.*\t4. /\t5. ^\t6. =\n" +
                 "7. sin\t8. cos\t9. tg\t10. arctg\n" +
                     "11. Ln\t12. Log10\t13. Exp\n" +
@@ -31,13 +31,18 @@ namespace _4calc
             //        Console.WriteLine(e.Message);
             //    }
             //}
+            Calculator_2 calculator_2 = new Calculator_2();
             while (true)
             {
-                var input = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                string input = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
 
                 try
                 {
-                    Calculator_2 calculator_2 = new Calculator_2(input);
+                    //Calculator_2 calculator_2 = new Calculator_2(input);
+                    calculator_2.s = input;
+                    calculator_2.Calculator();
                 }
                 catch (Exception e)
                 {

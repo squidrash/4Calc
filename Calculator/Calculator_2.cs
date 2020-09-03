@@ -7,29 +7,35 @@ namespace Calculator
         Сalculations сalculations = new Сalculations();
         double number;
         string stringOp;
+        //double result;
+        public string s;
 
-        public Calculator_2(string s)
+
+        public void Calculator()
         {
-            var result = double.TryParse(s, out number);
+            
+            var variable = double.TryParse(s, out number);
             stringOp = s;
-            if (result)
-            {
-                //Console.WriteLine(number);
-                  var nnn = Operation1();
-                Console.WriteLine(nnn);
-            }
+            //result = storage.result;
+            
 
-            else if (s == "sin" || s == "cos" || s == "tg" || s == "atg"
+            if(s == "sin" || s == "cos" || s == "tg" || s == "atg"
                         || s == "ln" || s == "log10" || s == "exp"
                         || s == "!" || s == "1/x" || s == "+"
                         || s == "-" || s == "*" || s == "/" || s == "=")
             {
-                Operation2();
-            }            
+            Operation2();
+            }
+            else if (variable)
+            {
+                //Console.WriteLine(number);
+                var nnn = Operation1();
+                Console.WriteLine($" первый блок if{nnn}");
+            }
             else
             {
-                Console.WriteLine("25 25 25 25 25 ");
-                throw new Exception("Ошибка в calculation_2");
+                Console.WriteLine("Ошибка в calculation_2");
+                throw new Exception();
             }
         }
         double Operation1()
@@ -60,10 +66,14 @@ namespace Calculator
             switch (storage.operation)
             {
                 case "+":
-                    var b = сalculations.Sum(number);
-                    Console.WriteLine(b);
-                    return b;
-                    
+                    storage.result = сalculations.Sum(storage.result, number);
+                    Console.WriteLine(storage.result);
+                    return storage.result;
+                //case "+":
+                //    result = сalculations.Sum(number);
+                //    Console.WriteLine(result);
+                //    return result;
+
                 default:
                     return 7777;
                     
