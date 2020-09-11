@@ -8,17 +8,13 @@ namespace Calculator
     {
         Storage storage = new Storage();
         Calculations calculations = new Calculations();
-        double number;
-        string tempOp;
-        bool dicExist = false;
-        
         List<string> allOperations = new List<string>
         { "sin", "cos", "tg", "atg", "ln", "log10", "exp",
-            "!", "1/x", "+", "-", "*","/", "=","^"
+            "!", "1/x", "+", "-", "*","/", "=","^", "C"
         };
         Dictionary<string, Func<double, double, double>> calc_2param = new Dictionary<string, Func<double, double, double>>();
         Dictionary<string, Func<double, double>> calc_1param = new Dictionary<string, Func<double, double>>();
-
+                
         void SetDictionary_2Param()
         {
             calc_2param.Add("+", calculations.Sum);
@@ -39,8 +35,10 @@ namespace Calculator
             calc_1param.Add("!", calculations.Factorial);
             calc_1param.Add("1/x", calculations.OneX);
         }
-        
 
+        double number;
+        string tempOp;
+        bool dicExist = false;
         public double Calculator(string numberOrOperation)
         {
             if(dicExist == false)
@@ -94,21 +92,30 @@ namespace Calculator
         }
         double ActionsWithOperator()
         {
-            //Console.WriteLine("ActionsWithOperator");
-            storage.operation = tempOp;
-            if (tempOp == "+" || tempOp == "-" || tempOp == "*" || tempOp == "/" || tempOp == "^")
+            if (tempOp == "C")
             {
-                //Console.WriteLine($"Operation_2 storage.result {storage.result}");
-                //Console.WriteLine($"Operation_2 storage.operation {storage.operation}");
+                storage.result = 0;
+                storage.operation = null;
                 return storage.result;
-            }
-            else if (tempOp == "=")
-            {
-                return Equals();
             }
             else
             {
-                return TrigonometricFunctions();
+                //Console.WriteLine("ActionsWithOperator");
+                storage.operation = tempOp;
+                if (tempOp == "+" || tempOp == "-" || tempOp == "*" || tempOp == "/" || tempOp == "^")
+                {
+                    //Console.WriteLine($"Operation_2 storage.result {storage.result}");
+                    //Console.WriteLine($"Operation_2 storage.operation {storage.operation}");
+                    return storage.result;
+                }
+                else if (tempOp == "=")
+                {
+                    return Equals();
+                }
+                else
+                {
+                    return TrigonometricFunctions();
+                }
             }
         }
         double Equals()// как правильно сделать это метод? как его реализовать в классе Calculations?
