@@ -9,8 +9,8 @@ namespace _4calc
         static void Main(string[] args)
         { 
             Console.WriteLine("1. +\t2. -\t3.*\t4. /\t5. ^\t6. =\n" +
-                "7. sin\t8. cos\t9. tg\t10. alnctg\n" +
-                    "11. Ln\t12. Log10\t13. Exp\n" +
+                "7. sin\t8. cos\t9. tg\t10. atg\n" +
+                    "11. ln\t12. log10\t13. exp\n" +
                     "14. !\t15. 1/x\t C");
             
             Calculator_2 calculator_2 = new Calculator_2();            

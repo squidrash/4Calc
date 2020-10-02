@@ -27,5 +27,30 @@ namespace Calculator
                 Operation = value;
             }
         }
+        private double SecondMemory { get; set; }
+        public double secondMemory
+        {
+            get
+            {
+                return SecondMemory;
+            }
+            set
+            {
+                SecondMemory = value;
+            }
+        }
+        private string SecondMemoryOperation { get; set; }
+        public string secondMemoryOperation
+        {
+            get
+            {
+                return SecondMemoryOperation;
+            }
+            set
+            {
+                SecondMemoryOperation = value;
+            }
+        }
+
     }
 }

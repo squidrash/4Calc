@@ -94,8 +94,13 @@ namespace Calculator
         }
         public double Log10(double x)
         {
-            double n = Math.Log10(x);
-            return n;
+            if (x < 0)
+                throw new Exception("Число должно быть больше 0");
+            else
+            {
+                double n = Math.Log10(x);
+                return n;
+            }
         }
         public double Exp(double x)
         {
