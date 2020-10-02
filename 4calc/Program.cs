@@ -12,7 +12,7 @@ namespace _4calc
                 "sin\tcos\ttg\tatg\n" +
                     "ln\tlog10\texp\n" +
                     "!\t1/x\t C\n" +
-                    "Ms\tMr\tMc\tM+\tM-");
+                    "Mr\tMc\tM+\tM-");
             
             Calculator_2 calculator_2 = new Calculator_2();            
             

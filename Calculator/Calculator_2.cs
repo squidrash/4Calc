@@ -27,7 +27,7 @@ namespace Calculator
         };
         List<string> secMemOp = new List<string>
         {
-            "ms", "mr",  "mc",  "m+",  "m-", 
+             "mr",  "mc",  "m+",  "m-", 
         };
         List<string> allOperations = new List<string> { };
         
@@ -57,7 +57,6 @@ namespace Calculator
         }
         void SetDictionary_SecMem()
         {
-            secMemDic.Add("ms", MemorySave);
             secMemDic.Add("mr", MemoryRead);
             secMemDic.Add("mc", MemoryClean);
             secMemDic.Add("m+", MemoryPlus);
@@ -170,11 +169,7 @@ namespace Calculator
             storage.operation = null;
             return secMemOp();
         }
-        double MemorySave()
-        {
-            storage.secondMemory = storage.result;
-            return storage.result;
-        }
+        
         double MemoryRead()
         {
             return storage.secondMemory;
@@ -182,16 +177,31 @@ namespace Calculator
         double MemoryClean()
         {
             storage.secondMemory = 0;
+            storage.secondMemoryOperation = null;
             return storage.result;
         }
         double MemoryPlus()
         {
-            storage.secondMemory += storage.result;
+            if(storage.secondMemoryOperation == null)
+            {
+                storage.secondMemory = storage.result;
+            }
+            else
+            {
+                storage.secondMemory += storage.result;
+            }
             return storage.result;
         }
         double MemoryMinus()
         {
-            storage.secondMemory -= storage.result;
+            if(storage.secondMemoryOperation == null)
+            {
+                storage.secondMemory = - Math.Abs(storage.result);
+            }
+            else
+            {
+                storage.secondMemory -= storage.result;
+            }
             return storage.result;
         }
     }
