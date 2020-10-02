@@ -8,11 +8,29 @@ namespace Calculator
     {
         Storage storage = new Storage();
         Calculations calculations = new Calculations();
-        List<string> allOperations = new List<string>
-        { "sin", "cos", "tg", "atg", "ln", "log10", "exp",
-            "!", "1/x", "+", "-", "*","/", "=","^", "C","c",
-            "ms", "mr", "mc", "m+", "m-"
+        //List<string> allOperations = new List<string>
+        //{ "sin", "cos", "tg", "atg", "ln", "log10", "exp",
+        //    "!", "1/x", "+", "-", "*","/", "=","^", "C","c",
+        //    "ms", "mr", "mc", "m+", "m-"
+        //};
+        List<string> opsWith_2params = new List<string>
+        {
+            "+", "-", "*","/","^"
         };
+        List<string> opsWith_1params = new List<string>
+        {
+            "sin",  "cos", "tg", "atg", "ln", "log10","exp", "!", "1/x"
+        };
+        List<string> otherOps = new List<string>
+        {
+            "=", "c"
+        };
+        List<string> secMemOp = new List<string>
+        {
+            "ms", "mr",  "mc",  "m+",  "m-", 
+        };
+        List<string> allOperations = new List<string> { };
+        
         Dictionary<string, Func<double, double, double>> calc_2param = new Dictionary<string, Func<double, double, double>>();
         Dictionary<string, Func<double, double>> calc_1param = new Dictionary<string, Func<double, double>>();
         Dictionary<string, Func<double>> secMemDic = new Dictionary<string, Func<double>>();
@@ -50,15 +68,16 @@ namespace Calculator
         string tempOp;
         bool dicExist = false;
         public double Calculator(string inputString)
-        {
+        {            
             if(dicExist == false)
             {
+                allOperations = opsWith_1params.Union(opsWith_2params).Union(otherOps).Union(secMemOp).ToList();
                 SetDictionary_1Param();
                 SetDictionary_2Param();
                 SetDictionary_SecMem();
                 dicExist = true;
             }
-
+            
             tempOp = inputString;
             var TryParseString = double.TryParse(inputString, out number);
             double finalResult = 0;
@@ -74,7 +93,7 @@ namespace Calculator
             }
             else
             {
-                throw new Exception("Ошибка в calculation_2");
+                throw new Exception();
             }
             return finalResult;
         }
@@ -99,13 +118,13 @@ namespace Calculator
         
         double ActionsWithOperator()
         {
-            if (tempOp == "C"||tempOp == "c")
+            if (tempOp == "c")
             {
                 storage.result = 0;
                 storage.operation = null;
                 return storage.result;
             }
-            else if (tempOp == "ms" || tempOp == "mr" || tempOp == "mc" || tempOp == "m+" || tempOp == "m-")
+            else if (secMemOp.Contains(tempOp))
             {
                 storage.secondMemoryOperation = tempOp;
                 return SecondMemoryOperation();
@@ -114,7 +133,7 @@ namespace Calculator
             {
                 //Console.WriteLine("ActionsWithOperator");
                 storage.operation = tempOp;
-                if (tempOp == "+" || tempOp == "-" || tempOp == "*" || tempOp == "/" || tempOp == "^")
+                if (opsWith_2params.Contains(tempOp))
                 {
                     //Console.WriteLine($"Operation_2 storage.result {storage.result}");
                     //Console.WriteLine($"Operation_2 storage.operation {storage.operation}");

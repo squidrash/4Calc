@@ -8,17 +8,18 @@ namespace _4calc
     {
         static void Main(string[] args)
         { 
-            Console.WriteLine("1. +\t2. -\t3.*\t4. /\t5. ^\t6. =\n" +
-                "7. sin\t8. cos\t9. tg\t10. atg\n" +
-                    "11. ln\t12. log10\t13. exp\n" +
-                    "14. !\t15. 1/x\t C");
+            Console.WriteLine("+\t-\t*\t/\t^\t=\n" +
+                "sin\tcos\ttg\tatg\n" +
+                    "ln\tlog10\texp\n" +
+                    "!\t1/x\t C\n" +
+                    "Ms\tMr\tMc\tM+\tM-");
             
             Calculator_2 calculator_2 = new Calculator_2();            
             
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                string input = Console.ReadLine();
+                string input = Console.ReadLine().ToLower();
                 Console.ForegroundColor = ConsoleColor.White;
 
                 try
